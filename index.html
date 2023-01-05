@@ -10,26 +10,43 @@
   <title>Flexbox and tailwind trening</title>
 </head>
 
-<body class="relative blur-md_ bg-white dark:bg-slate-800">
+<body class="relative bg-white dark:bg-slate-800 m-0">
 
-  <div class="relative max-w-7xl items-center mx-auto ">
+  <div class="relative max-w-7xl items-center mx-auto _blur-md">
+    <nav class="md:mt-10 mt-0">
 
-    <nav class="mt-10 mx-10">
       <div class="flex justify-end">
-        <!-- <img class="h-16" src="http://grafik.happydogs.vizz.pl./logo.svg" alt="Grafik freelancer/projektowanie graficzne/strony www"> -->
-        <span class="moonIco cursor-pointer rounded-md border border-gray-200">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 p-1 text-gray-500">
-          <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd" />
-        </svg>
-      </span>
 
-      <span class="sunIco cursor-pointer rounded-md border border-gray-200 display-none ">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-gray-200">
-        <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
-      </svg>
-    </span>
-        
-        
+        <span
+          class="mt-2 cursor-pointer order-last z-20 burger md:hidden px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-md text-[#E93B81] mx-4">
+          <i class="fa-solid fa-bars"></i>
+        </span>
+
+        <!-- mobile navigation -->
+        <nav class="nav_list absolute z-10 top-0 w-full bg-gray-100 hidden md:hidden transition">
+          <ul class="flex flex-col p-10 text-gray-500 text-lg space-y-4">
+            <li class="after:content-['_→']"><a href="#">Resume</a></li>
+            <li class="after:content-['_→']"><a href="#">Kontakt</a></li>
+          </ul>
+        </nav>
+
+        <!-- <img class="h-16" src="http://grafik.happydogs.vizz.pl./logo.svg" alt="Grafik freelancer/projektowanie graficzne/strony www"> -->
+        <span class="mt-2 md:mx-5 moonIco cursor-pointer rounded-md border border-gray-200 p-2 md:p-0 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+            class="w-6 h-6 p-1 text-gray-500">
+            <path fill-rule="evenodd"
+              d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+              clip-rule="evenodd" />
+          </svg>
+        </span>
+
+        <span class="mt-2 md:mx-5 sunIco cursor-pointer rounded-md border border-gray-200 md:p-0 display-none ">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-gray-200">
+            <path
+              d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+          </svg>
+        </span>
+
       </div>
     </nav>
 
@@ -60,7 +77,8 @@
           </li>
         </ul>
 
-        <ul class="space-y-4 sm:my-10 divide-y bg-gray-100 dark:bg-transparent divide-gray-300 dark:divide-gray-600 p-5 rounded-lg">
+        <ul
+          class="space-y-4 sm:my-10 divide-y bg-gray-100 dark:bg-transparent divide-gray-300 dark:divide-gray-600 p-5 rounded-lg">
           <li class="flex">
             <span class="px-3 py-2 rounded-md bg-white dark:bg-slate-800 text-[#E93B81] shadow-md">
               <i class="fa-solid fa-mobile-screen-button"></i>
@@ -86,9 +104,9 @@
 
       <div class="md:m-10 flex flex-col w-full">
 
-        <div class="flex flex-row justify-end self-end text-right lg:my-10">
+        <div class="flex flex-row justify-end self-end text-right md:my-10">
 
-          <nav class="hidden lg:block">
+          <nav class="hidden md:block">
             <ul class="flex space-x-3">
               <li class="w-24">
                 <a class="flex flex-col justify-center p-5 rounded-xl text-white bg-[#E93B81]" href="#">
@@ -107,7 +125,8 @@
 
         </div>
 
-        <div class="mt-10 sm:mt-0 md:mt-0 sm:border border-gray-200 dark:border-gray-500 text-gray-900 dark:text-gray-200 bg-transparent shadow-sm rounded-3xl px-5 sm:p-10">
+        <div
+          class="mt-10 sm:mt-0 md:mt-0 sm:border border-gray-200 dark:border-gray-500 text-gray-900 dark:text-gray-200 bg-transparent shadow-sm rounded-3xl px-5 sm:p-10">
 
           <div class="top-0 absolute md:relative flex flex-row">
             <span class="relative whitespace-nowrap font-bold font-bold text-2xl mt-3  mb-3">
@@ -164,7 +183,7 @@
     </div>
 
   </div>
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 
 </html>

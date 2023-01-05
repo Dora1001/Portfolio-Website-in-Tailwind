@@ -28,5 +28,24 @@ moon.addEventListener('click', () => {
 
 
 
+const navSlide = () => {
+
+  const burger = document.querySelector('.burger');
+  const nav = document.querySelector('.nav_list');
+
+
+burger.addEventListener ('click', () => {
+
+nav.classList.toggle('hidden')
+
+})
+
+}
+
+
+navSlide ();
+
+
+
 
 
