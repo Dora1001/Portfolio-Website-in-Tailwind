@@ -12,9 +12,15 @@
   <script src="https://kit.fontawesome.com/97dead128c.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
   <title>Flexbox and tailwind trening</title>
+
+  <style>
+    [x-cloak] {
+        display: none;
+    }
+  </style>
 </head>
 
-<body class="relative_ bg-white dark:bg-slate-800 m-0">
+<body class="bg-white dark:bg-slate-800 m-0">
 
   <div class="relative max-w-7xl items-center mx-auto">
     <nav class="flex items-end justify-end">
@@ -45,9 +51,9 @@
         </div>
       </div>
 
-      <div x-cloak class="hidden py-10 px-10 md:inline-flex items-center">
+      <div x-cloak class="hidden py-10 px-10 md:inline-flex items-center space-x-2">
         <button x-on:click="darkMode = 'light'">
-          <svg xmlns="http://www.w3.org/2000/svg" x-bind:class="{'hidden': darkMode === 'light'}"
+          <svg xmlns="http://www.w3.org/2000/svg" x-bind:class="{'bg-gray-200': darkMode === 'light'}"
             class="w-7 h-7 p-1 text-gray-500 transition rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100"
             fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -57,7 +63,7 @@
         </button>
 
         <button x-on:click="darkMode = 'dark'">
-          <svg xmlns="http://www.w3.org/2000/svg" x-bind:class="{'hidden': darkMode === 'dark'}" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 p-1 text-gray-500 transition rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100">
+          <svg xmlns="http://www.w3.org/2000/svg" x-bind:class="{'bg-gray-200': darkMode === 'dark'}" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 p-1 text-gray-500 transition rounded-md border border-gray-100 cursor-pointer hover:bg-gray-100">
             <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path>
           </svg>
           <span class="sr-only">dark</span>
@@ -66,7 +72,7 @@
       </div>
     </nav>
 
-    <div class="blur_activ flex flex-col md:flex-row justify-start mt-0 md:m-10">
+    <div class="flex flex-col md:flex-row justify-start mt-0 md:mx-10">
 
       <div
         class="h-fit mt-48 relative bg-transparent md:border border-gray-200 dark:border-slate-500 md:shadow-sm md:rounded-3xl pt-5 sm:pt-0 sm:p-10 flex flex-wrap flex-col items-center justify-start md:w-96">
@@ -79,14 +85,14 @@
         <ul class="flex space-x-3 my-6">
           <li>
             <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-              <span class="px-3 py-2 bg-gray-100 dark:bg-slate-800 rounded-md text-blue-700">
+              <span class="px-3 py-2 bg-gray-100 dark:bg-slate-800 rounded-md text-blue-700 hover:drop-shadow-md">
                 <i class="fa-brands fa-facebook-f"></i>
               </span>
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
-              <span class="px-3 py-2 bg-gray-100  dark:bg-slate-800 rounded-md text-blue-700">
+            <a href="https://www.linkedin.com/in/dorota-janus-dot/" target="_blank" rel="noopener noreferrer">
+              <span class="px-3 py-2 bg-gray-100 dark:bg-slate-800 rounded-md text-blue-700 hover:drop-shadow-md transition">
                 <i class="fa-brands fa-linkedin-in"></i>
               </span>
             </a>
@@ -118,20 +124,20 @@
 
       </div>
 
-      <div class="md:m-10 flex flex-col w-full">
+      <div x-cloak x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'description' }" id="tab_wrapper" class="md:m-10 flex flex-col w-full">
 
         <div class="flex flex-row justify-end self-end text-right md:my-10">
 
           <nav class="hidden md:block">
             <ul class="flex space-x-3">
-              <li class="w-24">
-                <a class="flex flex-col justify-center p-5 rounded-xl text-white bg-[#E93B81]" href="#">
-                  <span class=" text-xl mb-1">
+              <li class="w-24 ">
+                <a :class="{ 'bg-[#ff4081] text-white': tab === 'description' }" @click.prevent="tab = 'description'; window.location.hash = 'description'" href="#" class="flex flex-col justify-center p-5 rounded-xl bg-gray-200 text-gray-400">
+                  <span class="text-xl mb-1">
                     <i class="fa-regular fa-user"></i>
                   </span> About </a>
               </li>
               <li class="w-24">
-                <a class="flex flex-col justify-center p-5 rounded-xl bg-gray-200 text-gray-400" href="#">
+                <a :class="{ 'bg-[#ff4081] text-white': tab === 'reviews' }" @click.prevent="tab = 'reviews'; window.location.hash = 'reviews'" class="flex flex-col justify-center p-5 rounded-xl bg-gray-200 text-gray-400" href="#">
                   <span class=" text-xl mb-1">
                     <i class="fa-regular fa-file-lines"></i>
                   </span> Resume </a>
@@ -141,19 +147,19 @@
 
         </div>
 
-        <div
+        <div x-show="tab === 'description'"
           class="mt-10 sm:mt-0 md:mt-0 sm:border border-gray-200 dark:border-gray-500 text-gray-900 dark:text-gray-200 bg-transparent shadow-sm rounded-3xl px-5 sm:p-10">
 
           <div class="top-0 absolute md:relative flex flex-row">
             <span class="relative whitespace-nowrap font-bold font-bold text-2xl mt-3  mb-3">
-              <span class="bg-gray-300/75 dark:bg-slate-500 ml-2 absolute top-2/3 left-0 h-[0.58em] w-full"></span>
+              <span class="bg-yellow-300/75 rounded-md dark:bg-slate-500 ml-2 absolute top-2/3 left-0 h-[0.58em] w-full"></span>
               <span class="relative">About me</span>
             </span>
 
           </div>
           <p class="md:mt-10 text-base sm:text-lg">
             For many years I worked as a graphic designer, but it was the front-end that was my true love. One day I
-            fall
+            fell
             in love with code. In my work, I use both to create complete projects.
           </p>
           <p class="mt-10 text-sm sm:text-base">
@@ -187,6 +193,56 @@
             </div>
           </div>
         </div>
+
+        <div x-show="tab === 'reviews'"
+        class="mt-10 sm:mt-0 md:mt-0 sm:border border-gray-200 dark:border-gray-500 text-gray-900 dark:text-gray-200 bg-transparent shadow-sm rounded-3xl px-5 sm:p-10">
+
+        <div class="top-0 absolute md:relative flex flex-row">
+          <span class="relative whitespace-nowrap font-bold font-bold text-2xl mt-3  mb-3">
+            <span class="bg-yellow-300/75 rounded-md dark:bg-slate-500 ml-2 absolute top-2/3 left-0 h-[0.58em] w-full"></span>
+            <span class="relative">Resume</span>
+          </span>
+
+        </div>
+        <p class="md:mt-10 text-base font-semibold sm:text-lg my-5">
+         CV:
+        </p>
+        <div>
+          <a href="https://www.linkedin.com/in/dorota-janus-dot/" target="_blank" class="bg-gray-200 px-2 py-2 text-lg rounded-xl border-pink-400 border-1 text-neutral-600 hover:text-white hover:shadow-[inset_13rem_0_0_0] hover:shadow-[#ff4081] duration-[400ms,700ms] transition-[color,box-shadow]">
+            Download
+          </a>
+      </div>
+        <div class="flex flex-col my-10 text-gray-900 dark:text-gray-200">
+          <span class="relative whitespace-nowrap font-semibold text-xl">Skills:</span>
+<ul>
+  <li>
+    <span class="inline-flex items-center"><svg class="-ml-0.5 mr-1.5 h-2 w-2 text-indigo-400" fill="currentColor" viewBox="0 0 8 8">
+      <circle cx="4" cy="4" r="3"></circle>
+    </svg> Html</span>
+  </li>
+  <li>
+    <span class="inline-flex items-center"><svg class="-ml-0.5 mr-1.5 h-2 w-2 text-indigo-400" fill="currentColor" viewBox="0 0 8 8">
+      <circle cx="4" cy="4" r="3"></circle>
+    </svg>  CSS/Sass/Tailwind</span>
+   
+  </li>
+  <li>
+    <span class="inline-flex items-center"><svg class="-ml-0.5 mr-1.5 h-2 w-2 text-indigo-400" fill="currentColor" viewBox="0 0 8 8">
+      <circle cx="4" cy="4" r="3"></circle>
+    </svg> Javascript</span>
+    
+  </li>
+  <li>
+    <span class="inline-flex items-center"><svg class="-ml-0.5 mr-1.5 h-2 w-2 text-indigo-400" fill="currentColor" viewBox="0 0 8 8">
+      <circle cx="4" cy="4" r="3"></circle>
+    </svg> React</span>
+    
+  </li>
+</ul>
+
+
+        </div>
+      </div>
       </div>
 
     </div>
